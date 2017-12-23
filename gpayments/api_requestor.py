@@ -308,7 +308,7 @@ class APIRequestor(object):
             if params:
                 abs_url = _build_api_url(abs_url, encoded_params)
             post_data = None
-        elif method == 'post':
+        elif method == 'post' or method == 'put':
             if supplied_headers is not None and \
                     supplied_headers.get("Content-Type") == \
                     "multipart/form-data":

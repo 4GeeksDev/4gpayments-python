@@ -12,7 +12,7 @@ class UpdateableAPIResource(APIResource):
                 **params):
         requestor = api_requestor.APIRequestor(access_token)
         headers = None
-        response, access_token = requestor.request('post', url, params, headers)
+        response, access_token = requestor.request('put', url, params, headers)
         return util.convert_to_gpayments_object(response, access_token)
 
     @classmethod
@@ -25,7 +25,7 @@ class UpdateableAPIResource(APIResource):
         headers = None
 
         if updated_params:
-            self.refresh_from(self.request('post', self.instance_url(),
+            self.refresh_from(self.request('put', self.instance_url(),
                                            updated_params, headers))
         else:
             util.logger.debug("Trying to save already saved object %r", self)

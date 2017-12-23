@@ -20,6 +20,13 @@ print('Success: %r' % (resp))
 tony = gpayments.Customer.retrieve("S5p6rB3qkyNPCaU6MhK0a5eWiqm6lGUf")
 print('Tony: %r' % (tony))
 
+tony.credit_card_security_code_number='123'
+tony.credit_card_number='4242424242424242'
+tony.exp_month=12
+tony.exp_year=2035
+tony.currency='usd'
+tony.save()
+
 newcustomer = gpayments.Customer.create(
     name="Mario Bros",
     email="mariobros@gmail.com",
