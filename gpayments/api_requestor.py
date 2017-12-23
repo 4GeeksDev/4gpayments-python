@@ -319,6 +319,8 @@ class APIRequestor(object):
                     "multipart/form-data; boundary=%s" % (generator.boundary,)
             else:
                 post_data = encoded_params
+                if method == 'put':
+                    post_data = params
                 if my_access_token is None:
                     post_data = util.json.dumps(params)
         else:
