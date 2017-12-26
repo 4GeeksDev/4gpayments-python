@@ -8,7 +8,6 @@ from gpayments.api_resources.abstract import CreateableAPIResource
 from gpayments.api_resources.abstract import DeletableAPIResource
 from gpayments.api_resources.abstract import UpdateableAPIResource
 from gpayments.api_resources.abstract import ListableAPIResource
-from gpayments.api_resources.abstract import nested_resource_class_methods
 
 from gpayments.six.moves.urllib.parse import quote_plus
 

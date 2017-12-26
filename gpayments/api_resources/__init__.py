@@ -7,4 +7,5 @@ from gpayments.api_resources.list_object import ListObject
 from gpayments.api_resources.account import Account
 from gpayments.api_resources.customer import Customer
 from gpayments.api_resources.charge import Charge
+from gpayments.api_resources.simplecharge import SimpleCharge
 
