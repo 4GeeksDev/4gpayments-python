@@ -9,10 +9,14 @@ from gpayments.error import APIError
 gpayments.client_id = ""
 gpayments.client_secret = ""
 
-#gpayments.api_base = 'http://api.payments.4geeks.io'
-gpayments.log = 'debug'
+#gpayments.log = 'debug'
 
-gpayments.oauth.OAuth.token(client_id = gpayments.client_id, client_secret = gpayments.client_secret)
+#auth = gpayments.auth()
+
+# store the access_token from auth.data['access_token'] and it expires in auth.data['expires_in']
+# after that just continue to use the access token as this, no need to auth every time and set the client_id and client_secret
+
+gpayments.access_token = '0uC1m74kONYQgE2h9xHIDSmvqjowQp'
 
 #print("Attempting Account retreive...")
 
@@ -38,6 +42,8 @@ try:
     print('Charge: %r' % (chargeid))
 except APIError as e:
     print (e.message)
+
+exit(0)
 
 try:
     tony = gpayments.Customer.retrieve("S5p6rB3qkyNPCaU6MhK0a5eWiqm6lGUf")

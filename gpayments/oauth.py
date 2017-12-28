@@ -46,7 +46,6 @@ class OAuth(object):
 
 
     @staticmethod
-    # @TODO not used I believe
     def authorize_url(**params):
         path = '/authentication/authorize'
         OAuth._set_client_id(params)
@@ -55,6 +54,11 @@ class OAuth(object):
         query = urlencode(list(api_requestor._api_encode(params)))
         url = connect_api_base + path + '?' + query
         return url
+
+    @staticmethod
+    def auth(**params):
+        import gpayments
+        return OAuth.token(client_id=gpayments.client_id, client_secret=gpayments.client_secret)
 
     @staticmethod
     def token(**params):

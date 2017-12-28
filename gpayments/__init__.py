@@ -32,6 +32,10 @@ from gpayments.api_resources import *  # noqa
 # OAuth
 from gpayments.oauth import OAuth  # noqa
 
+
+def auth():
+    return oauth.OAuth.token(client_id=client_id, client_secret=client_secret)
+
 # Webhooks
 from gpayments.webhook import Webhook, WebhookSignature  # noqa
 
