@@ -31,7 +31,7 @@ class GpaymentsObjectEncoder(util.json.JSONEncoder):
     def __init__(self, *args, **kwargs):
         warnings.warn(
             '`GpaymentsObjectEncoder` is deprecated and will be removed in '
-            'version 2.0 of the Stripe bindings.  StripeObject is now a '
+            'version 2.0 of the Gpayments bindings.  GpaymentsObject is now a '
             'subclass of `dict` and is handled natively by the built-in '
             'json library.',
             DeprecationWarning)

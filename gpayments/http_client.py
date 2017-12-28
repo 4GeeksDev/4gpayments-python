@@ -40,10 +40,10 @@ else:
             sys.stderr.write(
                 'Warning: the Gpayments library requires that your Python '
                 '"requests" library be newer than version 0.8.8, but your '
-                '"requests" library is version %s. Stripe will fall back to '
+                '"requests" library is version %s. Gpayments will fall back to '
                 'an alternate HTTP library so everything should work. We '
                 'recommend upgrading your "requests" library. If you have any '
-                'questions, please contact support@stripe.com. (HINT: running '
+                'questions, please contact hello@4geeks.io. (HINT: running '
                 '"pip install -U requests" should upgrade your requests '
                 'library to the latest version.)' % (version,))
             requests = None
@@ -124,7 +124,7 @@ class RequestsClient(HTTPClient):
             except TypeError as e:
                 raise TypeError(
                     'Warning: It looks like your installed version of the '
-                    '"requests" library is not compatible with Stripe\'s '
+                    '"requests" library is not compatible with Gpayments\'s '
                     'usage thereof. (HINT: The most likely cause is that '
                     'your "requests" library is out of date. You can fix '
                     'that by running "pip install -U requests".) The '
@@ -143,15 +143,15 @@ class RequestsClient(HTTPClient):
 
     def _handle_request_error(self, e):
         if isinstance(e, requests.exceptions.RequestException):
-            msg = ("Unexpected error communicating with Stripe.  "
+            msg = ("Unexpected error communicating with Gpayments.  "
                    "If this problem persists, let us know at "
-                   "support@stripe.com.")
+                   "hello@4geeks.io.")
             err = "%s: %s" % (type(e).__name__, str(e))
         else:
-            msg = ("Unexpected error communicating with Stripe. "
+            msg = ("Unexpected error communicating with Gpayments. "
                    "It looks like there's probably a configuration "
                    "issue locally.  If this problem persists, let us "
-                   "know at support@stripe.com.")
+                   "know at hello@4geeks.io.")
             err = "A %s was raised" % (type(e).__name__,)
             if str(e):
                 err += " with error message %s" % (str(e),)
@@ -173,12 +173,12 @@ class UrlFetchClient(HTTPClient):
         if proxy:
             raise ValueError(
                 "No proxy support in urlfetch library. "
-                "Set stripe.default_http_client to either RequestsClient, "
+                "Set gpayments.default_http_client to either RequestsClient, "
                 "PycurlClient, or Urllib2Client instance to use a proxy.")
 
         self._verify_ssl_certs = verify_ssl_certs
         # GAE requests time out after 60 seconds, so make sure to default
-        # to 55 seconds to allow for a slow Stripe
+        # to 55 seconds to allow for a slow Gpayments
         self._deadline = deadline
 
     def request(self, method, url, headers, post_data=None):
@@ -189,7 +189,7 @@ class UrlFetchClient(HTTPClient):
                 headers=headers,
                 # Google App Engine doesn't let us specify our own cert bundle.
                 # However, that's ok because the CA bundle they use recognizes
-                # api.stripe.com.
+                # api.payments.4geeks.io.
                 validate_certificate=self._verify_ssl_certs,
                 deadline=self._deadline,
                 payload=post_data
@@ -201,19 +201,19 @@ class UrlFetchClient(HTTPClient):
 
     def _handle_request_error(self, e, url):
         if isinstance(e, urlfetch.InvalidURLError):
-            msg = ("The Stripe library attempted to fetch an "
+            msg = ("The Gpayments library attempted to fetch an "
                    "invalid URL (%r). This is likely due to a bug "
-                   "in the Stripe Python bindings. Please let us know "
-                   "at support@stripe.com." % (url,))
+                   "in the Gpayments Python bindings. Please let us know "
+                   "at hello@4geeks.io." % (url,))
         elif isinstance(e, urlfetch.DownloadError):
-            msg = "There was a problem retrieving data from Stripe."
+            msg = "There was a problem retrieving data from Gpayments."
         elif isinstance(e, urlfetch.ResponseTooLargeError):
             msg = ("There was a problem receiving all of your data from "
-                   "Stripe.  This is likely due to a bug in Stripe. "
-                   "Please let us know at support@stripe.com.")
+                   "Gpayments.  This is likely due to a bug in Gpayments. "
+                   "Please let us know at hello@4geeks.io.")
         else:
-            msg = ("Unexpected error communicating with Stripe. If this "
-                   "problem persists, let us know at support@stripe.com.")
+            msg = ("Unexpected error communicating with Gpayments. If this "
+                   "problem persists, let us know at hello@4geeks.io.")
 
         msg = textwrap.fill(msg) + "\n\n(Network error: " + str(e) + ")"
         raise error.APIConnectionError(msg)
@@ -307,20 +307,19 @@ class PycurlClient(HTTPClient):
         if e.args[0] in [pycurl.E_COULDNT_CONNECT,
                          pycurl.E_COULDNT_RESOLVE_HOST,
                          pycurl.E_OPERATION_TIMEOUTED]:
-            msg = ("Could not connect to Stripe.  Please check your "
+            msg = ("Could not connect to Gpayments.  Please check your "
                    "internet connection and try again.  If this problem "
-                   "persists, you should check Stripe's service status at "
-                   "https://twitter.com/stripestatus, or let us know at "
-                   "support@stripe.com.")
+                   "persists, let us know at "
+                   "hello@4geeks.io.")
         elif e.args[0] in [pycurl.E_SSL_CACERT,
                            pycurl.E_SSL_PEER_CERTIFICATE]:
-            msg = ("Could not verify Stripe's SSL certificate.  Please make "
+            msg = ("Could not verify Gpayments's SSL certificate.  Please make "
                    "sure that your network is not intercepting certificates.  "
                    "If this problem persists, let us know at "
-                   "support@stripe.com.")
+                   "hello@4geeks.io.")
         else:
-            msg = ("Unexpected error communicating with Stripe. If this "
-                   "problem persists, let us know at support@stripe.com.")
+            msg = ("Unexpected error communicating with Gpayments. If this "
+                   "problem persists, let us know at hello@4geeks.io.")
 
         msg = textwrap.fill(msg) + "\n\n(Network error: " + e.args[1] + ")"
         raise error.APIConnectionError(msg)
@@ -378,7 +377,7 @@ class Urllib2Client(HTTPClient):
         return rbody, rcode, lh
 
     def _handle_request_error(self, e):
-        msg = ("Unexpected error communicating with Stripe. "
-               "If this problem persists, let us know at support@stripe.com.")
+        msg = ("Unexpected error communicating with Gpayments. "
+               "If this problem persists, let us know at hello@4geeks.io.")
         msg = textwrap.fill(msg) + "\n\n(Network error: " + str(e) + ")"
         raise error.APIConnectionError(msg)

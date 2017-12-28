@@ -1,8 +1,12 @@
 # 4Geeks Payments Python library
 
-Es Open Source.
+Biblioteca para interactuar con 4Geeks Payments API
 
 Mira la documentación del API aqui http://docs.payments.4geeks.io
+
+Basada en Stripe Python Library
+
+Es Open Source.
 
 
 Instalación
@@ -153,7 +157,7 @@ sub.delete()
 ```
 
 # Authors
-* **Sergio Guzmán** Adaptación de Stripe Library para Gpayments[SITCO](http://www.sitcocr.com)
+* **Sergio Guzmán** Adaptación de Stripe Library para Gpayments [SITCO](http://www.sitcocr.com)
 
 # License
 

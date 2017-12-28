@@ -34,8 +34,6 @@ def _api_encode(data):
         key = util.utf8(key)
         if value is None:
             continue
-        elif hasattr(value, 'stripe_id'):
-            yield (key, value.stripe_id)
         elif isinstance(value, list) or isinstance(value, tuple):
             for sv in value:
                 if isinstance(sv, dict):
@@ -348,9 +346,6 @@ class APIRequestor(object):
         util.log_info(
             'Gpayments API response', path=abs_url, response_code=rcode)
         util.log_debug('API response body', body=rbody)
-        if 'Request-Id' in rheaders:
-            util.log_debug('Dashboard link for request',
-                           link=util.dashboard_link(rheaders['Request-Id']))
         if len(rbody) == 0:
             rbody = '{}'
 

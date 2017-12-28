@@ -21,7 +21,6 @@ __all__ = [
     'utf8',
     'log_info',
     'log_debug',
-    'dashboard_link',
     'logfmt',
 ]
 
@@ -92,22 +91,6 @@ def log_info(message, **params):
     if _console_log_level() in ['debug', 'info']:
         print(msg, file=sys.stderr)
     logger.info(msg)
-
-
-def _test_or_live_environment():
-    if stripe.api_key is None:
-        return
-    match = re.match(r'sk_(live|test)_', stripe.api_key)
-    if match is None:
-        return
-    return match.groups()[0]
-
-
-def dashboard_link(request_id):
-    return 'https://dashboard.stripe.com/{env}/logs/{reqid}'.format(
-        env=_test_or_live_environment() or 'test',
-        reqid=request_id,
-    )
 
 
 def logfmt(props):

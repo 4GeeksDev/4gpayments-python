@@ -16,7 +16,6 @@ client_id = None
 client_secret = None
 api_base = 'https://api.payments.4geeks.io'
 connect_api_base = 'https://api.payments.4geeks.io'
-# upload_api_base = 'https://uploads.stripe.com'
 api_version = None
 verify_ssl_certs = True
 proxy = None

@@ -113,7 +113,7 @@ class GpaymentsObject(dict):
                 raise KeyError(
                     "%r.  HINT: The %r attribute was set in the past."
                     "It was then wiped when refreshing the object with "
-                    "the result returned by Stripe's API, probably as a "
+                    "the result returned by Gpayments's API, probably as a "
                     "result of a save().  The attributes currently "
                     "available on this object are: %s" %
                     (k, k, ', '.join(list(self.keys()))))
@@ -217,15 +217,11 @@ class GpaymentsObject(dict):
     def to_dict(self):
         warnings.warn(
             'The `to_dict` method is deprecated and will be removed in '
-            'version 2.0 of the Stripe bindings. The StripeObject is '
+            'version 2.0 of the Gpayments bindings. The GpaymentsObject is '
             'itself now a subclass of `dict`.',
             DeprecationWarning)
 
         return dict(self)
-
-    @property
-    def stripe_id(self):
-        return self.id
 
     def serialize(self, previous):
         params = {}

@@ -18,12 +18,9 @@ class OAuth(object):
 
         raise error.AuthenticationError(
             'No client_id provided. (HINT: set your client_id using '
-            '"stripe.client_id = <CLIENT-ID>"). You can find your client_ids '
-            'in your Stripe dashboard at '
-            'https://dashboard.stripe.com/account/applications/settings, '
-            'after registering your account as a platform. See '
-            'https://stripe.com/docs/connect/standalone-accounts for details, '
-            'or email support@stripe.com if you have any questions.')
+            '"gpayments.client_id = <CLIENT-ID>"). You can find your client_ids '
+            'in your Gpayments dashboard at '
+            'https://dashboard.payments.4geeks.io/profile/')
 
     @staticmethod
     def _set_client_secret(params):
@@ -37,12 +34,9 @@ class OAuth(object):
 
         raise error.AuthenticationError(
             'No client_id provided. (HINT: set your client_id using '
-            '"stripe.client_id = <CLIENT-ID>"). You can find your client_ids '
-            'in your Stripe dashboard at '
-            'https://dashboard.stripe.com/account/applications/settings, '
-            'after registering your account as a platform. See '
-            'https://stripe.com/docs/connect/standalone-accounts for details, '
-            'or email support@stripe.com if you have any questions.')
+            '"gpayments.client_id = <CLIENT-ID>"). You can find your client_ids '
+            'in your Gpayments dashboard at '
+            'https://dashboard.payments.4geeks.io/profile/')
 
 
     @staticmethod
