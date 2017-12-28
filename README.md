@@ -157,7 +157,7 @@ sub.delete()
 ```
 
 # Authors
-* **Sergio Guzmán** Adaptación de Stripe Library para Gpayments [SITCO](http://www.sitcocr.com)
+* **Sergio Guzmán** Adaptación de Stripe Library para Gpayments por: [SITCO](http://www.sitcocr.com)
 
 # License
 
