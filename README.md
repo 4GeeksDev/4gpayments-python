@@ -1,8 +1,5 @@
 # 4Geeks Payments Python library
 
-La construcción de esta librería aún no ha iniciado. Está vacío. Si quieres colaborar, fork it. Generalmente aceptamos 
-nuevas funcionalidades que mejoren esta librería.
-
 Es Open Source.
 
 Mira la documentación del API aqui http://docs.payments.4geeks.io
@@ -19,10 +16,10 @@ pip install gpayments
 easy_install gpayments
 ```
 
-##Uso
+## Uso
 
 
-```sh
+```python
 # primer uso para obtener el token
 import gpayments
 gpayments.client_id = "CLIENT_ID_HERE"
@@ -40,7 +37,7 @@ No es necesario guardar el token en el programa porque la biblioteca lo hace aut
 una BD para su uso posterior, por ejemplo después de un reinicio en cuyo caso no es necesario autenticarse nuevamente 
 sino sólo establecer el token en la biblioteca de la siguiente manera:
 
-```sh
+```python
 import gpayments
 
 gpayments.access_token = "MI_ACCESS_TOKEN"
@@ -48,18 +45,15 @@ gpayments.access_token = "MI_ACCESS_TOKEN"
 # aquí ya se puede empezar a utilizar todas las funciones del API
 ```
 
-##Ejemplos
+## Account
 
-
-##Account
-
-```sh
+```python
 resp = gpayments.Account.retrieve()
 ```
 
-##Customer
+## Customer
 
-```sh
+```python
 pablo = gpayments.Customer.create(
     name="Pablo Marmol",
     email="pablomarmol@gmail.com",
@@ -82,8 +76,8 @@ pablo2.delete()
 customers = gpayments.Customer.list()
 ```
 
-##Charges
-```sh
+## Charges
+```python
 
 charge = gpayments.Charge.create(
     amount=80.5,
@@ -111,9 +105,9 @@ charge = gpayments.Charge.retrieve("1BTvroCqnAM123fqhvZw4d1kHk")
 
 ```
 
-##Plan
+## Plan
 
-```sh
+```python
 
 plan = gpayments.Plan.create(
     name="Basico mensual",
@@ -131,9 +125,9 @@ mi_plan = gpayments.Plan.retrieve("daa45209-bdb6-463f-97c2-683ddb60f8f6")
 mi_plan.delete()
 ```
 
-##Subscriptions
+## Subscriptions
 
-```sh
+```python
 
 # Dos opciones para crear una nueva suscripcion:
 # a) Teniendo el plan como una instancia:
