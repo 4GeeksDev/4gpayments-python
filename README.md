@@ -29,7 +29,9 @@ import gpayments
 gpayments.client_id = "CLIENT_ID_HERE"
 gpayments.client_secret = "CLIENT_SECRET_HERE"
 
-auth = gpayments.auth()
+# Intentar autenticarnos si el access_token no está seteado
+if gpayments.access_token is None:
+    auth = gpayments.auth()
 
 # guardar el token por ejemplo en una BD
 mi_token = auth.data['access_token']
