@@ -6,22 +6,26 @@ import gpayments
 
 from gpayments.error import APIError
 
-gpayments.client_id = ""
-gpayments.client_secret = ""
 
 #gpayments.log = 'debug'
 
-#auth = gpayments.auth()
+#gpayments.client_id = ""
+#gpayments.client_secret = ""
+
+#gpayments.access_token = ''
+
+if gpayments.access_token is None:
+    auth = gpayments.auth()
+
 
 # store the access_token from auth.data['access_token'] and it expires in auth.data['expires_in']
 # after that just continue to use the access token as this, no need to auth every time and set the client_id and client_secret
 
-gpayments.access_token = '0uC1m74kONYQgE2h9xHIDSmvqjowQp'
+print("Attempting Account retrieve...")
 
-#print("Attempting Account retreive...")
+resp = gpayments.Account.retrieve()
+print('Success: %r' % (resp))
 
-#resp = gpayments.Account.retrieve()
-#print('Success: %r' % (resp))
 
 '''simplecharge=gpayments.SimpleCharge.create(
     amount=10.99,
