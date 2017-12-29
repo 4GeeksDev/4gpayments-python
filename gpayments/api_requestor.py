@@ -289,7 +289,8 @@ class APIRequestor(object):
             my_access_token = access_token
 
         from gpayments import client_id, client_secret
-        if client_id is None or client_secret is None:
+        if my_access_token is None and \
+                (client_id is None or client_secret is None):
             raise error.AuthenticationError(
                 'No Client id or client secret provided. (HINT: set your client id using '
                 '"gpayments.client_id = <CLIENT_ID>" gpayments.client_secret = <CLIENT_SECRET>). '
