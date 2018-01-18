@@ -165,7 +165,7 @@ sub.delete()
 # c) requested_by_customer
 
 refund = gpayments.Refund.create(
-        charge_id='1BTvroCqnAM123fqhvZw4d1kHk  ',
+        charge_id='1BTvroCqnAM123fqhvZw4d1kHk',
         amount=10.99,
         reason='requested_by_customer'
 )
