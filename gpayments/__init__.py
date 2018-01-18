@@ -12,7 +12,6 @@ from __future__ import absolute_import, division, print_function
 # api_key = None
 access_token = None
 client_id = None
-# @TODO new in 4Geeks
 client_secret = None
 api_base = 'https://api.payments.4geeks.io'
 connect_api_base = 'https://api.payments.4geeks.io'

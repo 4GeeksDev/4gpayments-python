@@ -161,9 +161,6 @@ sub.delete()
 # Authors
 * **Sergio Guzmán** Adaptación de Stripe Library para Gpayments por: [SITCO](http://www.sitcocr.com)
 
-# License
-
-This project is licensed under the MIT License
 
 # Acknowledgments
 * Stripe Payments Python Library
