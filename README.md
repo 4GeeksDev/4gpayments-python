@@ -4,8 +4,6 @@ Biblioteca para interactuar con 4Geeks Payments API
 
 Mira la documentación del API aqui http://docs.payments.4geeks.io
 
-Basada en Stripe Python Library
-
 Es Open Source.
 
 
