@@ -158,6 +158,27 @@ sub.delete()
 
 ```
 
+## Refunds
+
+``` python
+# use one of the following reasons:
+# a) duplicate
+# b) fraudulent
+# c) requested_by_customer
+
+refund = gpayments.Refund.create(
+        charge_id='1BTvroCqnAM123fqhvZw4d1kHk  ',
+        amount=10.99,
+        reason='requested_by_customer'
+)
+
+# list refunds
+
+refunds = gpayments.Refund.list()
+
+refund1 = gpayments.Refund.retrieve('1BlfcrCqnAMAMqhvdYEIoQAI')
+```
+
 # Authors
 * **Sergio Guzmán** Adaptación de Stripe Library para Gpayments por: [SITCO](http://www.sitcocr.com)
 

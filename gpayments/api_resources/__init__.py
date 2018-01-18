@@ -10,5 +10,6 @@ from gpayments.api_resources.charge import Charge
 from gpayments.api_resources.simplecharge import SimpleCharge
 from gpayments.api_resources.plan import Plan
 from gpayments.api_resources.subscription import Subscription
+from gpayments.api_resources.refund import Refund
 
 
